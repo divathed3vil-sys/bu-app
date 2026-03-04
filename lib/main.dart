@@ -8,15 +8,17 @@ void main() {
   runApp(const ProviderScope(child: BuApp()));
 }
 
-class BuApp extends StatelessWidget {
+class BuApp extends ConsumerWidget {
   const BuApp({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final router = ref.watch(appRouterProvider);
+
     return MaterialApp.router(
       debugShowCheckedModeBanner: false,
       theme: BuTheme.dark,
-      routerConfig: appRouter,
+      routerConfig: router,
     );
   }
 }

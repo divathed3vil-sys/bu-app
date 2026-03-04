@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+
+import 'core/routing/app_router.dart';
+import 'core/theme/bu_theme.dart';
 
 void main() {
-  runApp(const BuApp());
+  runApp(const ProviderScope(child: BuApp()));
 }
 
 class BuApp extends StatelessWidget {
@@ -9,9 +13,10 @@ class BuApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp.router(
       debugShowCheckedModeBanner: false,
-      home: Scaffold(body: Center(child: Text('BU Core Engine v1.0'))),
+      theme: BuTheme.dark,
+      routerConfig: appRouter,
     );
   }
 }
